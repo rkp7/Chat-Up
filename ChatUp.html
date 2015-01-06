@@ -1,0 +1,221 @@
+<head>
+  <title>Chat Up</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  {{> nav_template}}
+  {{#if currentUser}}
+    {{> tabs}}
+   {{else}} 
+    {{> home_template}} 
+  {{/if}}
+</body>
+
+<template name="nav_template">
+    <div id="container">
+    <nav id="navigation_bar" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="project1.html"><i class="fa fa-weixin fa-4x"></i></a>         
+            </div> 
+            <div class="navbar-header">
+                <h2 id="app_name">Chat Up</h2>
+            </div>
+            {{#if currentUser}}
+            <div id="account_nav">
+                <p>Hello,  {{> loginButtons}}</p>
+            </div>
+            {{/if}}  
+        </div>
+    </nav>
+     {{> footer}} 
+      </div>
+</template>
+
+<template name="home_template">      
+        <h1 id="homepage_content1">Welcome to Chat Up!</h1>
+        <div id="home_image1"><i class="fa fa-comments-o fa-5x"></i></div>
+        <div id="home_image2"><i class="fa fa-users fa-5x"></i></div>
+        <div id="home_image3"><i class="fa fa-users fa-5x"></i></div>
+        <h3 id="homepage_content2">Please sign in to chat.</h3>
+        <div id="login_option"><i class="fa fa-sign-in"></i>   {{> loginButtons}}</div>  
+</template>
+
+<template name="footer">
+    <div id="footer_div">
+        <center><p>A CS-50x Project by <a href="https://www.linkedin.com/pub/raj-palkar/99/969/693" style="color: white">Raj K. Palkar</a></p></center>
+    </div>
+</template>
+
+<template name="tabs">
+    <div class="tab-content" onload="getProfile();">
+        <ul id="tabs_list" class="nav nav-tabs" role="tablist">
+            <li role="presentation"   class="active" ><a href="#contacts" aria-controls="contacts" role="tab" data-toggle="tab"><center>Contacts</center></a></li>
+            <li role="presentation"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab"><center>Chat</center></a></li>
+            <li role="presentation" onclick="getProfile()"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><center>Account</center></a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane  active" id="contacts">
+                {{> contact_template1}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="chat">
+                {{> chat_template}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="account">
+                {{> account_template}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="contact_template1">
+    <div id="down">
+        <p>Add contact  <i class="fa fa-sort"></i> </p>
+    </div>
+    <div id="add_contact">
+    <br>
+    <center>
+    <h2 style="font-family: 'Lobster Two', cursive;">Add contacts to your Chat Up account</h2>
+    <div id="contact_pic">
+        <i class="fa fa-users fa-5x"></i>
+    </div>
+    <div class="input-group" style="width:65%">
+      <span class="input-group-addon">E-mail </span>
+      <input type="email" class="form-control" style="height:30px;" name="i1" id="i1" placeholder="E-mail id of Chat Up user"/>
+    </div>
+    <div id="contact_yes">
+        <br>   
+        <i class="fa fa-check fa-5x"></i>
+        <h2 class="decide_contact">Excellent work! Contact Added.</h2>
+    </div>
+    <div id="contact_no">
+        <br>
+        <i class="fa fa-times fa-5x"></i>
+        <h2 class="decide_contact">Invalid User!</h2>
+    </div>
+    <div id="contact_again">
+        <br>
+        <i class="fa fa-times fa-5x"></i>
+        <h2 class="decide_contact">Already a contact!</h2>
+    </div>
+    </center>
+    </div>
+    <div id="display_list">
+        <br>
+        <ul id="contact_display_list">
+        <center>
+        {{#each Contacts}}  
+            <li>
+                <div class="panel panel-info" style="width: 80%"> 
+                <div class="panel-heading"><p style="font-family: 'Lobster Two', cursive; font-size: 2em"> Username: <strong>{{username}}</strong></p><p style="font-family: 'Lobster Two', cursive;">{{email}}</p></div>
+                <div class="panel-body">
+                    {{#if read}}
+                    {{else}}
+                    <div class="new_message"> New Message  <i class="fa fa-envelope" style="color:white"></i></div>
+                    {{/if}}
+                    <p style="font-family: 'Lobster Two', cursive; font-size: 1.5em;">{{status}} </p>
+                    <form class="contact_display_form">
+                    <button type="button" name="chat_button" id="chat_button" class="chat_button btn btn-default" onclick="getDetails(this.value);" value="{{contact_id}}"><p style="font-family: 'Lobster Two', cursive; font-size: 1.1em; color: #3399cc">Let's Chat</p></button>
+                    <button type="button" name="remove_button" id="remove_button" class="remove_button btn btn-default" onclick="remove_contact(this.value);" value="{{contact_id}}"><p style="font-family: 'Lobster Two', cursive; font-size: 1.1em; color: #3399cc">Remove Contact</p></button>
+                    </form>
+                    <script>
+                          $(".chat_button").click(function() {
+                              $("#tabs_list a[href='#chat']").tab("show");
+                          });
+                    </script>
+                </div></div>
+            </li>
+            {{else}}
+                <i class="fa fa-arrow-circle-o-up fa-3x"></i>
+                <p style="font-family: 'Lobster Two', cursive;"> Add contacts </p>
+                <h2>You don't have any contacts right now!</h2>
+            {{/each}}
+            </center>
+        </ul>
+    </div>
+</template>
+
+<template name="account_template">
+    <div id="account_div" >
+        <br>
+        <br>
+        <center>
+            <i class="fa fa-user fa-5x"></i>
+            <br>
+            <br>
+            <br>
+            <div class="input-group" style="width:65%">
+              <span class="input-group-addon"  style=" width: 20%">E-mail </span>
+              <input type="email" class="form-control" style="height:30px;" name="profile_email" id="profile_email" readonly/>
+            </div>
+            <br>
+            <br>
+            <div class="input-group" style="width:65%">
+              <span class="input-group-addon"  style=" width: 20%">Username</span>
+              <input type="text" class="form-control" style="height:30px;" name="profile_username" id="profile_username" />
+            </div>
+            <br>
+            <br>
+            <button type="button" name="change_username_button" id="change_username_button" class="btn btn-default" onclick="change_username()" value="change_username"><p style="font-family: 'Lobster Two', cursive; font-size: 1.1em; color: #3399cc">Change Username</p></button>              
+            <br>
+            <br>
+            <br>
+            <div class="input-group" style="width:65%">
+              <span class="input-group-addon" style=" width: 20%">Status </span>
+              <input type="text" class="form-control" style="height:30px;" name="profile_status" id="profile_status" />
+            </div>
+            <br>
+            <br>
+            <button type="button" name="update_status_button" id="update_status_button" class="btn btn-default" onclick="update_status()" value="update_status"><p style="font-family: 'Lobster Two', cursive; font-size: 1.1em; color: #3399cc">Update Status</p></button>              
+        </center>
+    </div>
+</template>
+
+<template name="chat_template">
+     <div id="initial_message1">
+            <br>
+            <p class="chat_msgs" style="text-decoration: underline; font-size:2em">
+                Please select a contact for chat
+            </p>
+    </div>
+    {{#if CheckContacts}}
+    <div id="chat_div">
+        <div id="chat_box_div">
+        {{#each Messages}}
+            <p class="chat_msgs" style="text-decoration: underline; font-size:2em">
+            {{user_email}}</p>
+            <p class="chat_msgs">{{user_username}} : {{chat}}
+            </p>
+            <br>
+        {{/each}}
+        </div>
+        <div id="send_chat_div">
+            <div class="input-group" style="width:65%">
+              <input type="text" class="form-control" style="height:40px;" name="send_chat" id="send_chat" placeholder="Your message"/>
+              <button type="button" name="send_chat_button" id="send_chat_button" class="btn btn-default"  value="send_chat_button"><p style="font-family: 'Lobster Two', cursive; font-size: 1.1em; color: #3399cc">Send</p></button> 
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <div id="initial_message2">
+            <br>
+            <p class="chat_msgs" style="text-decoration: underline; font-size:1.4em">
+                The contact hasn't added you to his account. Sorry, you can't chat with this contact.
+            </p>
+    </div>
+</template>

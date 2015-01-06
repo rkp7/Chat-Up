@@ -1,0 +1,330 @@
+/* CSS declarations go here */
+#container
+{
+    background: #3399cc;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#navigation_bar
+{
+    height: 7%;
+}
+#login_option
+{
+    font: Arial; 
+    font-size: 2em;
+    position: relative;
+    top: 15px;
+}
+
+#app_name
+{
+    color: #3399cc;
+    font-family: 'Lobster Two', cursive;
+}
+
+#homepage_content1
+{
+    font-family: 'Lobster Two', cursive;
+    color: white;
+    position: absolute;
+    top:15%;
+    left:39%;
+}
+
+#home_image1
+{
+    position:absolute;
+    top:30%;
+    left:45%;
+}   
+
+#home_image2
+{
+    position:absolute;
+    top:40%;
+    left:40%;
+} 
+
+#home_image3
+{
+    position:absolute;
+    top:40%;
+    left:50%;
+} 
+
+#homepage_content2
+{
+    font-family: 'Lobster Two', cursive;
+    position: absolute;
+    left: 42%;
+    top: 53%;
+    color: white;
+}
+
+#login_option
+{
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    left: 42%;
+    top: 60%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#login_option:hover
+{
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    left: 42%;
+    top: 60%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#footer_div
+{
+    float: bottom;
+    width: 100%;
+    background-color: black;
+    color: #3399cc;
+    position: absolute;
+    top:95%;
+    height:5%;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.5em;
+}
+
+#account_nav
+{
+    font-size: 2em;
+    position: absolute;
+    right: 10%;
+    top:30%;
+    margin: 0;
+    color: #3399cc;
+}
+
+#tabs_list
+{
+    position: fixed;
+    top: 7%;
+    background-color: white;
+    width: 100%;
+}
+
+#tabs_list li
+{
+    width: 33%;
+}
+
+#home
+{
+    width: 100%;
+    height: 82%;
+    background-color: white;
+    position: absolute;
+    top:12%;
+   
+
+}
+
+.tab-pane
+{
+    width: 100%;
+    height: 82%;
+    background-color: white;
+    position: absolute;
+    top:12%;
+}
+
+#add_contact
+{
+    width: 100%;
+    position: absolute;
+    background-color: #bfefff;
+    display: none;
+    height:95%;  
+    z-index: 10; 
+}
+
+.input_box
+{
+    width: 80%;
+}
+
+.input_text
+{
+    font-size: 1.5em;
+}
+
+#contact_pic
+{
+    margin: 10%;
+}
+
+#decide_contact
+{
+  font-family: 'Lobster Two', cursive;
+  position: absoulte;
+  width: 100%;
+  height: 20%;
+}
+
+#contact_yes
+{
+    visibility: hidden;
+    position: absolute;
+    left: 38%;
+}
+
+#contact_no
+{
+    visibility: hidden;
+    position: absolute;
+    left:45%;
+}
+
+#contact_again
+{
+    visibility: hidden;
+    position: absolute;
+    left:43%;
+}
+
+#down
+{
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-family: 'Lobster Two', cursive;
+    width: 100%;
+    height: 5%;
+    font-size: 1.5em;
+}
+
+#down p
+{
+    cursor: pointer;
+}
+#display_list
+{
+    position: absoulte;
+    z-index: -1;
+    height: 90%;
+    overflow: auto;
+}
+
+#contact_display_list
+{
+    list-style-type: none;
+}
+
+#account_div
+{
+    background-color: #bfefff;
+    height: 100%;
+}
+
+#chat_div
+{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+#chat_box_div
+{
+    position: absolute;
+    width:60%;
+    border: 3px solid black;
+    border-radius: 30px;
+    left: 20%;
+    top: 5%;
+    height: 75%;
+    background-color:  #bfefff;
+    color: black;
+    overflow: auto;
+}
+
+#send_chat_div
+{
+    position: absolute;
+    top: 85%;
+    left: 20%;
+    width: 70%;
+}
+
+#send_chat
+{
+    position: absolute;
+    height: 30%;
+    left: 10%;
+    width: 85%;
+}
+
+#send_chat_button
+{
+    position: absolute;
+    left: 100%;
+    width:30%;
+    top: -5%;
+}
+
+.chat_msgs
+{
+    
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.8em;
+    margin: 5px;
+    margin-left: 20px;
+    
+}
+
+.new_message
+{
+    position: absolute;
+    background-color: red;
+    color: white;
+    width: 10%;
+    height: 5%;
+    text-align: center;
+    font-family: 'Lobster Two', cursive;
+    font-size: 1.6em;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+#initial_message1
+{
+    position: absolute;
+    text-decoration: none;
+    color: #3399cc;
+    text-align: center;
+    width: 100%;
+    top: 30%;
+    font-size: 3em;
+
+}
+
+#initial_message2
+{
+    position: absolute;
+    text-decoration: none;
+    color: #3399cc;
+    text-align: center;
+    width: 100%;
+    top: 30%;
+    font-size: 3em;
+    visibility: hidden;
+
+}
